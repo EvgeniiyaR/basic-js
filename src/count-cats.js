@@ -23,15 +23,16 @@ const matrix = [
 function countCats(matrix) {
   // throw new NotImplementedError('Not implemented');
   let count = 0;
-  for (let i = 0; i < matrix.length; i++) {
-    for (let j = 0; j < matrix[i].length; j++) {
-      if (matrix[i][j] === '^^') {
+  matrix.forEach(element => {
+    for (let j = 0; j < element.length; j++) {
+      if (element[j] === '^^') {
         count += 1;
       }
     }
+  });
+  return count;  
   }
-  return count;
-}
+  
 
 module.exports = {
   countCats
