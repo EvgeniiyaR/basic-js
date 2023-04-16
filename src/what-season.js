@@ -15,6 +15,11 @@ function getSeason(date) {
   if (typeof(date) === 'undefined') {
     return 'Unable to determine the time of year!';
   }
+  try {
+    date.getTime();
+  } catch(error) {
+    throw new Error('Invalid date!');
+  }
   const month = date.getMonth();
   if (month === 0 || month === 1 || month === 11) {
     return 'winter';
