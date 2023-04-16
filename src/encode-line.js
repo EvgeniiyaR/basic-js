@@ -11,31 +11,35 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function encodeLine(str) {
-  // throw new NotImplementedError('Not implemented');
   let obj = {};
   let newList = [];
   let list = str.split('');
   let value = list[0];
   let count = 0;
   for (let i = 0; i < list.length; i++) {
+    if (i === list.length - 1) {
+      newList.push(obj);
+    }
     if (value === list[i]) {
+      console.log(newList);
       count += 1;
       obj[list[i]] = count;
-    } else {
+    } if (value !== list[i]) {
       newList.push(obj);
       obj = {};
       count = 1;
       value = list[i];
+      console.log(newList);
     }
   }
-  newList.forEach(element => {
-    let res = '';
+  let res = '';
+  newList.forEach(element => {  
     for (key in element) {
       res += element[key] + key + '';
     }
   });
   return res;
-}
+};
 
 module.exports = {
   encodeLine

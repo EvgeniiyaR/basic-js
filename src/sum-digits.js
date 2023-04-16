@@ -13,16 +13,19 @@ const { NotImplementedError } = require('../extensions/index.js');
  *
  */
 function getSumOfDigits(n) {
-  // if (n.length === 0) {
-  //   return n;
-  // }
-  // let a = 0;
-  // n = String(n).split('');
-  // n.reduce((acc, curr) => {
-  //   acc += curr;
-  //   a = acc;
-  // }, 0);
-  // getSumOfDigits(a);
+  if (n.length === 0) {
+    return n;
+  }
+  let a = 0;
+  n = String(n).split('');
+  for (let i = 0; i < n.length; i++) {
+    a += n[i];
+  }
+  if (a.length >= 2) {
+    getSumOfDigits(a);
+  } else {
+    return a;
+  }
 }
 
 module.exports = {
