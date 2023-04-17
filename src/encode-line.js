@@ -21,7 +21,6 @@ function encodeLine(str) {
       newList.push(obj);
     }
     if (value === list[i]) {
-      console.log(newList);
       count += 1;
       obj[list[i]] = count;
     } if (value !== list[i]) {
@@ -29,7 +28,6 @@ function encodeLine(str) {
       obj = {};
       count = 1;
       value = list[i];
-      console.log(newList);
     }
   }
   let res = '';

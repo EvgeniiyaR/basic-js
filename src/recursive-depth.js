@@ -28,9 +28,6 @@ class DepthCalculator {
   }
 }
 
-// const a = new DepthCalculator();
-// a.calculateDepth();
-
 module.exports = {
   DepthCalculator
 };
