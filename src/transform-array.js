@@ -14,24 +14,33 @@ const { NotImplementedError } = require('../extensions/index.js');
  * 
  */
 function transform(arr) {
-  // throw new NotImplementedError('Not implemented');
+  let result = [];
   if (!(arr instanceof Array)) {
-    return "'arr' parameter must be an instance of the Array!";
+    throw new Error("'arr' parameter must be an instance of the Array!");
   }
   for (let i = 0; i < arr.length; i++) {
     if (arr[i] === '--double-next') {
-      arr[i] = arr[i + 1];
+      result.push(arr[i + 1]);
+      console.log(result);
     } else if (arr[i] === '--double-prev') {
-      arr[i] = arr[i - 1];
+      result.push(result[i - 1]);
+      console.log(result);
     } else if (arr[i] === '--discard-next') {
-      delete arr[i];
-      delete arr[i + 1];
+      result.push(undefined);
+      console.log(result);
+    } else if (arr[i - 1] === '--discard-next') {
+      result.push(undefined);
+      console.log(result);
     } else if (arr[i] === '--discard-prev') {
-      delete arr[i];
-      delete arr[i - 1];
-    }
+      result[i - 1] = undefined;
+      result.push(undefined);
+      console.log(result);
+    } else {
+      result.push(arr[i]);
+      console.log(result);
+    } 
   }
-  return arr;
+  return result.filter((el) => typeof(el) !== 'undefined');
 }
 
 module.exports = {
